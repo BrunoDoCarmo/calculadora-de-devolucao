@@ -1,0 +1,503 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+:root {
+    --bg-title-table: #628ecb;
+    --orange: #ff7800;
+    --green: #718355;
+    --orange-hover: #c16009;
+    --black: #000;
+    --blue: #003554;
+    --light-color: #666;
+    --box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .1);
+    --border: .2rem solid rgba(0, 0, 0, .1);
+    --outline: .1rem solid rgba(0, 0, 0, .1);
+    --outline-hover: .2rem solid var(--black);
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    /* transition: all .5s linear; */
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+
+body {
+    font-size: 1.125rem;
+    line-height: 1.5;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 9%;
+    height: 6rem;
+    background-color: #333;
+    color: #fff;
+}
+
+main {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - 6rem);
+}
+
+.heading {
+    text-align: center;
+    padding: .5rem 0;
+    font-size: 3.5rem;
+    color: var(--black);
+    position: relative;
+}
+
+.heading p {
+    position: absolute;
+    top: 50%;
+    font-size: 1.5rem;
+    left: 45%;
+    color: var(--green);
+    transform: translate(-45%, 50%);
+}
+
+.heading span {
+    background: var(--green);
+    color: #fff;
+    display: inline-block;
+    padding: .5rem 3rem;
+    clip-path: polygon(100% 0, 93% 50%, 100% 99%, 0% 100%, 7% 50%, 0% 0%);
+}
+
+.modalBtn {
+    background: var(--orange);
+    font-size: 1.75rem;
+    padding: 1.5rem;
+    color: #fff;
+    border-radius: 1rem;
+    position: relative;
+    width: 100%;
+}
+
+.modalBtn:hover {
+    background: var(--orange-hover);
+}
+
+#modalProduto,
+#modalProdutoComprado {
+    display: none;
+}
+
+#modalProduto.active,
+#modalProdutoComprado.active,
+#modalProdutoDevolvido.active {
+    display: block;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    position: relative;
+    top: 50%;
+    margin: auto;
+    transform: translateY(-50%);
+    width: 65%;
+    background-color: #fefefe;
+    border: 1px solid #888;
+    border-radius: 8px;
+    padding: 2rem;
+    padding-top: 3rem;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.dadosProduto {
+    width: 100%;
+    height: 100%;
+    border: .2rem solid #000;
+    border-radius: 1rem;
+    text-align: center;
+    width: 100%;
+}
+
+.dadosProduto .produto {
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+}
+.dadosProduto .produto .adicionar {
+    font-size: 3rem;
+}
+
+.valor,
+.quantidade,
+.encargos,
+.impostos {
+    border: .1rem solid #000;
+    border-radius: .5rem;
+    padding: .5rem;
+    margin: .5rem;
+}
+
+.impostos .dados {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+}
+
+.dados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dados>div {
+    flex: 1;
+}
+
+input[type="text"] {
+    font-size: 2rem;
+    height: 3.5rem;
+    border-radius: .5rem;
+    width: 100%;
+    border: .15rem solid var(--black);
+    text-align: center;
+}
+
+input[type="text"]:focus {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+.button>button {
+    flex: 1;
+    height: 4rem;
+    border-radius: .5rem;
+    color: #fff;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: red;
+}
+
+.button button:nth-child(2) {
+    background: green;
+}
+
+.input-option356 {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.radio {
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    height: 3.5rem;
+    width: 3.5rem;
+    position: relative;
+}
+
+.radio label {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.radio label span {
+    position: absolute;
+    z-index: 1;
+}
+
+.radio label input[type=radio] {
+    all: unset;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.radio label input[type=radio]:checked {
+    background-color: var(--orange);
+    border-radius: 50%;
+    border-color: var(--orange);
+}
+
+.radio label input[type=radio]:checked~span {
+    color: #ffffff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.coluna {
+    border: var(--border);
+    border-color: black;
+    border-radius: .5rem;
+    height: calc(100% - 1rem);
+    width: 100%;
+    position: relative;
+}
+
+.tabs {
+    overflow-y: auto;
+    display: flex;
+    justify-content: space-around;
+    gap: .5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+    height: 15.5rem;
+}
+
+.subtabs {
+    display: none;
+    position: relative;
+    height: 15.5rem;
+    justify-content: center;
+}
+
+.coluna .cabecario {
+    position: relative;
+    height: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: var(--border);
+    border-color: black;
+    background-color: var(--bg-title-table);
+}
+
+.table {
+    padding: .5rem;
+    position: absolute;
+    height: calc(100% - 20.05rem);
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+}
+
+.tributacao {
+    width: 100%;
+    border-collapse: collapse;
+}
+.tributacao th,
+.tributacao td {
+    border: var(--border);
+    border-color: #000;
+    font-size: 1.75rem;
+    text-align: center;
+    align-items: center;
+    height: 5rem;
+}
+.input-devolvido {
+    text-align: center !important;
+    height: 5rem;
+}
+.input-devolvido:focus {
+    color: black !important;
+    background:transparent !important;
+}
+.tributacao tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+.tributacao tbody tr:nth-child(odd) {
+    background-color: #ddd;
+}
+
+.coluna .cabecario .titleTableComprado,
+.coluna .cabecario .titleTableDevolvido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.coluna .cabecario .titleTableComprado .circulo,
+.coluna .cabecario .titleTableDevolvido .circuloDevolvido {
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    background: var(--orange);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0.5rem;
+    font-size: 2.5rem;
+}
+
+.coluna .cabecario i {
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5rem;
+}
+
+.titleTableCompra,
+.titleTableDevolucao {
+    color: #fff;
+    padding: 10px;
+    position: relative;
+    gap: .5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.tributacao input[type="text"] {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    text-align: right;
+}
+
+.tributacao input[type="text"]:focus {
+    outline: none;
+    background-color: #f2f2f2;
+}
+
+.calcImposto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 0;
+    padding: 2rem;
+    white-space: nowrap;
+}
+
+.calcImposto>div {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+    /* Colunas repetidas com tamanho mínimo de 100px e máximo de 1fr */
+}
+
+.calcImposto>div input[type=text] {
+    font-size: 1.5rem;
+    width: 100%;
+}
+
+/* Esconda todos os conteúdos das abas por padrão */
+.tabcontent {
+    display: none;
+}
+
+/* Estilo dos botões de abas */
+.tablinkComprado,
+.tablinksComprado,
+.tablinkDevolvido,
+.tablinksDevolvido,
+.returnButton {
+    background-color: #f2f2f2;
+    border: .15rem solid var(--orange-hover);
+    border-radius: .75rem;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    height: 5.5rem;
+}
+
+.returnButton {
+    border: none;
+    background: var(--orange);
+    border-radius: 50%;
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+.returnButton:hover {
+    background: var(--orange-hover);
+}
+
+.tablinkComprado:hover,
+.tablinksComprado:hover,
+.tablinkDevolvido:hover,
+.tablinksDevolvido:hover {
+    border: .15rem solid var(--orange-hover);
+    background: var(--orange-hover);
+    color: #fff;
+}
+
+/* Estilo do botão da aba ativa */
+.tablinkComprado.active,
+.tablinksComprado.active,
+.tablinkDevolvido.active,
+.tablinksDevolvido.active {
+    border: .15rem solid var(--orange);
+    background: var(--orange);
+    color: #fff;
+}
